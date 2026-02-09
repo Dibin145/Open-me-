@@ -1,0 +1,494 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f6efe9;
+    color: #4b2e2e;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #5a3e36;
+    padding: 22px 70px;   /* increased height + width */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    letter-spacing: 0.5px;
+}
+.navbar ul { display: flex; gap: 25px; list-style: none; }
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    opacity: 0.95;
+}
+
+/* Hero */
+.hero {
+    height: 85vh;
+    background:
+        linear-gradient(
+            rgba(90,62,54,0.65),
+            rgba(90,62,54,0.65)
+        ),
+        url("assests/k1.jpeg") center/cover no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Bigger & elegant hero title */
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    margin-bottom: 22px;
+    letter-spacing: 1px;
+}
+
+/* Softer subtitle */
+.hero p {
+    font-size: 22px;
+    max-width: 720px;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+
+
+
+/* Letter */
+.letter-choice { padding: 80px 20%; text-align: center; }
+.choice-buttons { display: flex; gap: 25px; justify-content: center; }
+.yes-btn, .secret-btn {
+    padding: 12px 30px;
+    background: #5a3e36;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+}
+.no-btn {
+    padding: 14px 40px;
+    font-size: 16px;
+    border-radius: 35px;
+    border: 2px solid #5a3e36;
+    background: transparent;
+    color: #5a3e36;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.15s ease;
+}
+
+.no-btn:hover { transform: translateX(40px); }
+
+/* Popup */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: .4s;
+    z-index: 9999;   /* 👈 THIS fixes the overlay issue */
+}
+
+.popup:target { opacity: 1; visibility: visible; }
+
+.popup-content {
+    background: #f6efe9;
+    width: 90%;
+    max-width: 600px;
+    padding: 40px;
+    border-radius: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 26px;
+    text-decoration: none;
+}
+/* Congratulations Popup */
+.congrats-popup h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #4b2e2e;
+}
+
+.congrats-popup p {
+    font-size: 17px;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+/* Video container */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(90,62,54,0.35);
+    margin-bottom: 25px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+/* Video container */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(90,62,54,0.35);
+    margin-bottom: 25px;
+}
+
+.video-wrapper video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Heartbeat */
+.heartbeat { animation: beat 1.8s infinite; }
+@keyframes beat { 50% { transform: translate(-50%,-50%) scale(1.03); } }
+
+/* Typing */
+.typing {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #5a3e36;
+    width: 0;
+    animation: typing 4s steps(30,end) forwards;
+}
+@keyframes typing { to { width: 100%; } }
+
+/* Gallery */
+.gallery-section { padding: 70px 10%; background: #e8d8c3; text-align: center; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 20px; }
+.gallery img { width: 100%; border-radius: 20px; }
+/* Memories Section */
+.gallery-section {
+    padding: 80px 10%;
+    text-align: center;
+    background: linear-gradient(
+        rgba(232, 216, 195, 0.95),
+        rgba(203, 183, 163, 0.95)
+    );
+}
+
+.gallery-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    margin-bottom: 35px;
+    color: #4b2e2e;
+}
+
+/* Slider */
+.memory-slider {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 15px;
+    scrollbar-width: none; /* Firefox */
+}
+
+.memory-slider::-webkit-scrollbar {
+    display: none; /* Chrome */
+}
+/* Memories Section */
+.gallery-section {
+    padding: 80px 10%;
+    text-align: center;
+    background: linear-gradient(
+        rgba(232, 216, 195, 0.95),
+        rgba(203, 183, 163, 0.95)
+    );
+    position: relative;
+}
+
+.gallery-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    margin-bottom: 40px;
+}
+
+/* Slider */
+.memory-slider {
+    display: flex;
+    gap: 35px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 20px;
+}
+
+.memory-slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* Polaroid Frame */
+.polaroid {
+    flex: 0 0 300px;
+    background: #fff;
+    padding: 15px 15px 35px;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(90, 62, 54, 0.35);
+    scroll-snap-align: center;
+    position: relative;
+    transition: transform 0.4s ease;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 5px;
+    filter: brightness(0.97) contrast(1.05);
+}
+
+.polaroid span {
+    display: block;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #5a3e36;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Slight tilt for realism */
+.polaroid:nth-child(odd) {
+    transform: rotate(-2deg);
+}
+.polaroid:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.polaroid:hover {
+    transform: scale(1.05) rotate(0deg);
+}
+
+/* Sparkles */
+.sparkles span {
+    position: absolute;
+    font-size: 14px;
+    opacity: 0.8;
+    animation: sparkleFade 1.5s forwards;
+}
+
+@keyframes sparkleFade {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(1.8); }
+}
+
+
+.memory-slider img {
+    flex: 0 0 320px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 25px;
+    scroll-snap-align: center;
+
+    /* Less blur than hero */
+    filter: brightness(0.95) contrast(1.05);
+    box-shadow: 0 12px 30px rgba(90, 62, 54, 0.35);
+
+    transition: transform 0.4s ease;
+}
+
+/* Hover effect */
+.memory-slider img:hover {
+    transform: scale(1.05);
+}
+
+
+/* Gifts */
+.gifts { padding: 80px 15%; text-align: center; }
+.gift { font-size: 70px; display: inline-block; text-decoration: none; }
+.gift-box { display: inline-block; margin: 0 25px; }
+
+.bubble { animation: bubble 2.5s infinite; }
+.delay1 { animation-delay: .6s; }
+.delay2 { animation-delay: 1.2s; }
+
+@keyframes bubble {
+    50% { transform: translateY(-15px); }
+}
+
+/* Confetti */
+.confetti span {
+    position: absolute;
+    top: -10px;
+    animation: confetti 3s infinite;
+}
+@keyframes confetti {
+    to { transform: translateY(300px) rotate(360deg); opacity: 0; }
+}
+
+/* Floating Hearts */
+.hearts span {
+    position: fixed;
+    bottom: -50px;
+    animation: float 10s infinite;
+}
+@keyframes float { to { transform: translateY(-120vh); opacity: 0; } }
+/* Footer */
+.footer {
+    background: linear-gradient(to top, #5a3e36, #7a5a4f);
+    padding: 70px 20px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Soft Glow */
+.footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 60%);
+}
+
+/* Content */
+.footer-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Flowers */
+.flowers {
+    font-size: 26px;
+    margin-bottom: 15px;
+    animation: flowerFloat 4s ease-in-out infinite;
+}
+
+@keyframes flowerFloat {
+    50% { transform: translateY(-6px); }
+}
+
+/* Heading */
+.footer h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+/* Princess Text */
+.princess-text {
+    font-size: 16px;
+    line-height: 1.8;
+    opacity: 0.95;
+    margin-bottom: 25px;
+}
+
+/* Cute Line */
+.cute-line {
+    font-size: 18px;
+    background: rgba(255,255,255,0.15);
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+/* Signature */
+.signature {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* Letter Section – Clean & Spacious */
+.letter-choice {
+    padding: 120px 15%;
+    text-align: center;
+    background: linear-gradient(
+        rgba(246, 239, 233, 0.95),
+        rgba(232, 216, 195, 0.95)
+    );
+}
+
+/* Card feel */
+.letter-choice h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    margin-bottom: 25px;
+    color: #4b2e2e;
+}
+
+.letter-choice p {
+    font-size: 18px;
+    margin-bottom: 45px;
+    opacity: 0.9;
+}
+
+/* Buttons wrapper */
+.choice-buttons {
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Yes Button */
+.yes-btn {
+    padding: 14px 40px;
+    background: #5a3e36;
+    color: white;
+    border-radius: 35px;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(90,62,54,0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.yes-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(90,62,54,0.45);
+}
+
+/* No Button (playful) */
+.no-btn {
+    padding: 14px 40px;
+    font-size: 16px;
+    border-radius: 35px;
+    border: 2px solid #5a3e36;
+    background: transparent;
+    color: #5a3e36;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.no-btn:hover {
+    transform: translateX(60px);
+}
